@@ -102,7 +102,6 @@ void main(){
  free(arr);
 }
 
-
 //add the different sorting algorithms beyond this point
 //selection
 void selection(int arr[], int n){
@@ -200,9 +199,7 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
     free(temp);
 }
 
-
 //PARTIONING ALGO
-
 int hoare(int arr[], int l, int h){
     int p = arr[l];
     int i = l -1, j = h + 1, t;
@@ -239,10 +236,6 @@ void quickHoare(int arr[], int l, int h){
     }
 }
 
-
-
-
-
 void heapify(int arr[], int n, int i){
     int m = i;
     int l = 2* i + 1;
@@ -263,6 +256,7 @@ void heapify(int arr[], int n, int i){
     }
 
 }
+
 void heapSort(int arr[], int n){
     for(int i = n/2 - 1; i >= 0; i--){
         heapify(arr, n, i);
