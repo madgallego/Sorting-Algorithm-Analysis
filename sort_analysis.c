@@ -106,8 +106,8 @@ void main(){
 //add the different sorting algorithms beyond this point
 //selection
 void selection(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     int temp;
     for(int i = 0; i < n; i++){
         for(int j = i + 1; j < n; j++ ){
@@ -120,16 +120,15 @@ void selection(int arr[], int n){
             }
         }
     }
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+    
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
 }
 //insertion
 void insertion(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     int temp;
     for(int i = 1; i < n; i++){
         for(int j = i; j > 0; j--){
@@ -140,16 +139,15 @@ void insertion(int arr[], int n){
             }
         }
     }
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+    
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
 }
 //bubble
 void bubble(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     int temp;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n - 1; j++){
@@ -160,10 +158,9 @@ void bubble(int arr[], int n){
             }
         }
     }
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+    
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
 }
 
@@ -282,36 +279,33 @@ void heapSort(int arr[], int n){
 
 //FOR RECURSIVE SORTS, USE THESE FUNCTION CALLS
 void startQuick(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     quickHoare(arr, 0, n-1);
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
     
 }
 
 void startHeap(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     heapSort(arr, n);
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+    
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
 }
 
 void startMerge(int arr[], int n){
-    clock_t start = clock();
-    clock_t end;
+    struct timespec start, end;
+    clock_gettime( CLOCK_REALTIME, &start);
     mergesort(arr, 0, n-1);
-    end = clock();
-    printf("Starting Tick: %d\n", (int) start);
-    printf("Ending Tick: %d\n", (int) end);
-    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    clock_gettime( CLOCK_REALTIME, &end);
+    
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
     printf("Total: %.15f\n", elapsed);
 }
 
