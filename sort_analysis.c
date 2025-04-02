@@ -1,3 +1,12 @@
+//DESIGN AND ANALYSIS OF ALGORITHMS
+//PROGRAMMING PROJECT
+
+//GABARDA, YNO
+//GALLEGO, MHARC ALEX
+//JOLOC, JOHN LESTER
+//NACARIO, CARL JOSEPH
+//TABAYAG, XARIS JOY
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -106,8 +115,8 @@ void main(){
 //add the different sorting algorithms beyond this point
 //selection
 void selection(int arr[], int n){
-    struct timespec start, end;
-    clock_gettime( CLOCK_REALTIME, &start);
+    struct timespec start, end; //timespec struc used to store the time elapsed from start to end when the program runs
+    clock_gettime( CLOCK_REALTIME, &start); //clock_gettime() function used for more accurate time measurements
     int temp;
     for(int i = 0; i < n; i++){
         for(int j = i + 1; j < n; j++ ){
@@ -122,7 +131,7 @@ void selection(int arr[], int n){
     }
     clock_gettime( CLOCK_REALTIME, &end);
     
-    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0));
+    double elapsed = ((double) ((end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0)); 
     printf("Total: %.15f\n", elapsed);
 }
 //insertion
