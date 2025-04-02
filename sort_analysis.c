@@ -37,7 +37,7 @@ void main(){
 
     switch(choice) {
     case 1: printf("Randomly Generated"); 
-    rng(arr, N, 100); 
+    rng(arr, N, 0); 
     break;
 
     case 2: printf("Increasing Sequence\nEnter a positive starting value: "); 
@@ -59,33 +59,44 @@ void main(){
         printf("Enter your choice: ");
         scanf("%d", &random_choice);
 
-    switch(random_choice){
-            case 1:
-            selection(arr,N);
-            break;
+        int i = 0;
+        while(i < 5){
+            switch(random_choice){
+                    case 1:
+                    selection(arr,N);
+                    break;
 
-            case 2:
-            insertion(arr,N);
-            break;
+                    case 2:
+                    insertion(arr,N);
+                    break;
 
-            case 3:
-            bubble(arr,N);
-            break;
+                    case 3:
+                    bubble(arr,N);
+                    break;
 
-            case 4:
-            startMerge(arr,N);
-            break;
-            
-            case 5:
-            startQuick(arr,N); 
-            break;
+                    case 4:
+                    startMerge(arr,N);
+                    break;
+                    
+                    case 5:
+                    startQuick(arr,N); 
+                    break;
 
-            case 6:
-            startHeap(arr,N);
-            break;
+                    case 6:
+                    startHeap(arr,N);
+                    break;
 
-            default: printf("Invalid choice! Exiting program.\n");
-            return;
+                    default: printf("Invalid choice! Exiting program.\n");
+                    return;
+                }
+            printf("\n");
+            //regenarate our array based on settings
+            if(choice == 1)
+                rng(arr, N, 0);
+            else
+                increasingSequence(arr, N, &X);
+            i++;
+
         }
     }
  free(arr);
