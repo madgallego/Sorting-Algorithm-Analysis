@@ -4,22 +4,21 @@
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
-void increasingSequence(int arr[], int N, int *X);
-void selection(int arr[], int n);
-void insertion(int arr[], int n);
-void bubble(int arr[], int n);
-void mergesort(int arr[], int i, int j);
-void merge(int arr[], int i1, int j1, int i2, int j2);
-int hoare(int arr[], int l, int h);
-void quickHoare(int arr[], int l, int h);
-void heapify(int arr[], int n, int i);
-void heapSort(int arr[], int n);
-void startQuick(int arr[], int n);
-void startHeap(int arr[], int n);
-void startMerge(int arr[], int n);
-void rng(int arr[], int length, int min);
-void increasingSequence(int arr[], int N, int *X);
-void printArr(int arr[], int n);
+void selection(int arr[], int n); //algorithm for sorting that finds the smallest element and swaps the position of the elements from the left
+void insertion(int arr[], int n); //algorithm for sorting that traverses through the array and inserts the smallest elements to the left
+void bubble(int arr[], int n); //algorithm for sorting that goes through the array multiple times and moves the largest element to the right
+void mergesort(int arr[], int i, int j); //divides the array in half until there is only one element left before merging and sorting 
+void merge(int arr[], int i1, int j1, int i2, int j2); //algorithm used after dividing the array to sort and merge the elements
+int hoare(int arr[], int l, int h); //algorithm used after partition that uses a pivot as a guide to sort the array
+void quickHoare(int arr[], int l, int h); //algorithm for sorting by partitioning and then sorting the array
+void heapify(int arr[], int n, int i); //function to heapify the tree to get the maximum element
+void heapSort(int arr[], int n); //algorithm for sorting using heap properties
+void startQuick(int arr[], int n); //function to measure the run time of quick sort algorithm
+void startHeap(int arr[], int n); //function to measure the run time of heap sort algorithm
+void startMerge(int arr[], int n); //function to measure the run time of merge sort algorithm
+void rng(int arr[], int length, int min); //function that generates random numbers as elements in the array
+void increasingSequence(int arr[], int N, int *X); //function to input elements in the array from x, x+1,..., x+n 
+void printArr(int arr[], int n); //function to print the array
 
 
 void main(){
