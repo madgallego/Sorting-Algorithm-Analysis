@@ -32,8 +32,8 @@ void main(){
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
     switch(choice) {
-    case 1: printf("Randomly Generated"); rng(arr, N, 100); printArr(arr, N);
-    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); printArr(arr, N);
+    case 1: printf("Randomly Generated"); rng(arr, N, 100);
+    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X);
     }
 
     free(arr);
