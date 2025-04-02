@@ -113,19 +113,20 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
 
 int hoare(int arr[], int l, int h){
     int p = arr[l];
-    int i = l + 1, j = h, t;
+    int i = l -1, j = h + 1, t;
 
     while(1){
-        while(arr[i] < p)
+        do{
             i++;
-        while(arr[j] >= p)
+        }
+        while(arr[i] < p);
+        do{
             j--;
+        }
+        while(arr[j] > p);
 
         if(i >=j){
-            t = arr[i];
-            arr[i] = arr[p];
-            arr[p] = arr[i];
-            return i;
+            return j;
         }
         
         t = arr[i];
