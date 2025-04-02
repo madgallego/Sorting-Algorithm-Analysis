@@ -23,7 +23,7 @@ void printArr(int arr[], int n);
 
 
 void main(){
-    int i, N, X, choice;
+    int i, N, X, choice, random_choice;
 
     
     printf("Enter num of values to be sorted: ");
@@ -31,10 +31,8 @@ void main(){
 
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
-    printf("Select a data generation method:\n1. Randomly Generate\n2. Increasing Sequence");
-    scanf("%d", &choice);
-
     switch(choice) {
+
 
 
     case 1: printf("Randomly Generated"); rng(arr, N, 100); break;
@@ -42,6 +40,7 @@ void main(){
     }
     
     printArr(arr, N);
+
 
     free(arr);
 }
