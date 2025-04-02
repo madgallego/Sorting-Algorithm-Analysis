@@ -4,8 +4,8 @@
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
-
 void increasingSequence(int arr[], int N, int *X);
+
 
 void main(){
     int i, N, X, choice;
