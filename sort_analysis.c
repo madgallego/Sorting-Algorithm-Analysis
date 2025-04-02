@@ -5,6 +5,21 @@
 
 //make use of fucntion decalrations here, and function definitions in below the main function
 void increasingSequence(int arr[], int N, int *X);
+void selection(int arr[], int n);
+void insertion(int arr[], int n);
+void bubble(int arr[], int n);
+void mergesort(int arr[], int i, int j);
+void merge(int arr[], int i1, int j1, int i2, int j2);
+int hoare(int arr[], int l, int h);
+void quickHoare(int arr[], int l, int h);
+void heapify(int arr[], int n, int i);
+void heapSort(int arr[], int n);
+void startQuick(int arr[], int n);
+void startHeap(int arr[], int n);
+void startMerge(int arr[], int n);
+void rng(int arr[], int length, int min);
+void increasingSequence(int arr[], int N, int *X);
+void printArr(int arr[], int n);
 
 
 void main(){
@@ -17,8 +32,8 @@ void main(){
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
     switch(choice) {
-    case 1: printf("Randomly Generated"); rng(arr, N, 100); printArr(arr, N);
-    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); printArr(arr, N);
+    case 1: printf("Randomly Generated"); rng(arr, N, 100);
+    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X);
     }
 
     free(arr);
