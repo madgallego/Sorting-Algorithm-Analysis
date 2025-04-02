@@ -35,6 +35,7 @@ void main(){
     scanf("%d", &choice);
 
     switch(choice) {
+
     case 1: printf("Randomly Generated"); rng(arr, N, 100); break;
     case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); break;
     }
