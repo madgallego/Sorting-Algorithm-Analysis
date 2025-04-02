@@ -4,20 +4,7 @@
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
-void selection(int arr[], int n);
-void insertion(int arr[], int n);
-void bubble(int arr[], int n);
-void mergesort(int arr[], int i, int j);
-void merge(int arr[], int i1, int j1, int i2, int j2);
-int hoare(int arr[], int l, int h);
-void quickHoare(int arr[], int l, int h);
-void heapify(int arr[], int n, int i);
-void heapSort(int arr[], int n);
-void startQuick(int arr[], int n);
-void startHeap(int arr[], int n);
-void startMerge(int arr[], int n);
-void rng(int arr[], int length, int min);
-void printArr(int arr[], int n);
+
 
 
 void main() {
@@ -28,6 +15,7 @@ void main() {
     scanf(" %d", &n);
     int *arr = malloc(sizeof(int) * n);
     rng(arr, n, 100);
+    printArr(arr, n);
 
 
     //add the calls here
