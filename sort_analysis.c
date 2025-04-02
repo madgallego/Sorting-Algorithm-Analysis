@@ -4,41 +4,24 @@
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
-// Function Declarations
-void selection(int arr[], int n);
-void insertion(int arr[], int n);
-void bubble(int arr[], int n);
-void mergesort(int arr[], int i, int j);
-void merge(int arr[], int i1, int j1, int i2, int j2);
-int hoare(int arr[], int l, int h);
-void quickHoare(int arr[], int l, int h);
-void heapify(int arr[], int n, int i);
-void heapSort(int arr[], int n);
-void startQuick(int arr[], int n);
-void startHeap(int arr[], int n);
-void startMerge(int arr[], int n);
+void increasingSequence(int arr[], int N, int *X);
 
 
-void main() {
-    //user inputs will also occur here
-        //ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
-    printf("Enter number of elements: ");
-    int n;
-    scanf(" %d", &n);
-    int *arr = malloc(sizeof(int) * n);
-    rng(arr, n, 100);
-    printArr(arr, n);
+void main(){
+    int i, N, X, choice;
 
+    
+    printf("Enter num of values to be sorted: ");
+    scanf("%d", &N);
 
-    //add the calls here
-    //use swtich case
-
-
+    int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
+    
+    switch(choice) {
+    case 1: printf("Randomly Generated"); rng(arr, N, 100); printArr(arr, N);
+    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); printArr(arr, N);
+    }
 
     free(arr);
-
-
-
 }
 
 
@@ -262,11 +245,11 @@ void rng(int arr[], int length, int min){
     }
 }
 
-void increasingSequence(int array[], int N, int *X) {
+void increasingSequence(int arr[], int N, int *X) {
     int i;
 
     for(i=0; i<N; i++){
-        array[i] = *X;
+        arr[i] = *X;
         (*X)++;
     }
     return;
