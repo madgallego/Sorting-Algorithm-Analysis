@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
@@ -18,3 +19,192 @@ void main() {
 
 
 //add the different sorting algorithms beyond this point
+//selection
+void selection(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    int temp;
+    for(int i = 0; i < n; i++){
+        for(int j = i + 1; j < n; j++ ){
+            //compare
+            if(arr[j] < arr[i]){
+                //swap
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+}
+//insertion
+void insertion(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    int temp;
+    for(int i = 1; i < n; i++){
+        for(int j = i; j > 0; j--){
+            if(arr[j] < arr[j - 1]){
+                temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+            }
+        }
+    }
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+}
+//bubble
+void bubble(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    int temp;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n - 1; j++){
+            if(arr[j] > arr[j + 1]){
+                temp = arr[j];
+                arr[j]= arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+}
+
+//merge
+void mergesort(int arr[], int i, int j){
+    if(i < j){
+        int mid = (i + j)/2;
+        mergesort(arr, i, mid);
+        mergesort(arr, mid+1, j);
+        merge(arr, i, mid, mid+1, j);
+    }
+}
+//merge 2.0
+void merge(int arr[], int i1, int j1, int i2, int j2){
+    int start1 = i1;
+    int start2 = i2;
+    int end1 = j1;
+    int end2 = j2;
+    int k = 0;
+    int temp[j2 - i1 + 1];
+    while(start1 <= end1 && start2 <= end2){
+        if(arr[start1] < arr[start2])
+            temp[k++] = arr[start1++];
+        else
+            temp[k++] = arr[start2++];
+    }
+
+    //copy the rest
+    while(start1 <= end1)
+        temp[k++] = arr[start1++];
+    while(start2 <= end2)
+        temp[k++] = arr[start2++];
+
+    //copy back to original
+    for(int i = i1, k = 0; i <= j2; i++, k++)
+        arr[i] = temp[k];
+}
+
+
+//PARTIONING ALGO
+
+int hoare(int arr[], int l, int h){
+    int p = arr[l];
+    int i = l + 1, j = h, t;
+
+    while(1){
+        while(arr[i] < p)
+            i++;
+        while(arr[j] >= p)
+            j--;
+
+        if(i >=j){
+            t = arr[i];
+            arr[i] = arr[p];
+            arr[p] = arr[i];
+            return i;
+        }
+        
+        t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+}
+
+//BACK TO SORTING
+void quickHoare(int arr[], int l, int h){
+    if(l < h){
+        int p = hoare(arr, l ,h);
+        //left
+        quickHoare(arr, l, p);
+        //right
+        quickHoare(arr, p + 1, h);
+    }
+}
+
+
+
+
+
+void heapify(int arr[], int n, int i){
+    int m = i;
+    int l = 2* i + 1;
+    int r = 2* i + 2;
+    if(l < n && arr[l] > arr[m])
+        m = l;
+    
+    if(r < n && arr[r] > arr[m])
+        m = r;
+
+    if(m != i){
+        int temp = arr[i];
+        arr[i] = arr[m];
+        arr[m] = temp;
+
+        heapify(arr, n , m);
+
+    }
+
+}
+void heapSort(int arr[], int n){
+    for(int i = n/2 - 1; i >= 0; i--){
+        heapify(arr, n, i);
+    }
+
+    for(int i = n -1; i > 0; i--){
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+//FOR RECURSIVE SORTS, USE THESE FUNCTION CALLS
+void startQuick(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    quickHoare(arr, 0, n-1);
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+    
+}
+
+void startHeap(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    heapSort(arr, n);
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+}
+
+void startMerge(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    mergesort(arr, 0, n - 1);
+    double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
+    printf("Total: %f", elapsed);
+}
