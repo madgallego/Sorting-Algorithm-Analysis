@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 
@@ -7,6 +8,7 @@
 
 void main() {
     //user inputs will also occur here
+        //ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     //add the calls here
     //use swtich case
 
@@ -92,7 +94,7 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
     int end1 = j1;
     int end2 = j2;
     int k = 0;
-    int temp[j2 - i1 + 1];
+    int *temp= malloc(sizeof(int) * (j2 - i1 + 1));
     while(start1 <= end1 && start2 <= end2){
         if(arr[start1] < arr[start2])
             temp[k++] = arr[start1++];
@@ -109,6 +111,7 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
     //copy back to original
     for(int i = i1, k = 0; i <= j2; i++, k++)
         arr[i] = temp[k];
+    free(temp);
 }
 
 
