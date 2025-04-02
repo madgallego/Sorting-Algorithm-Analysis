@@ -6,14 +6,24 @@
 //make use of fucntion decalrations here, and function definitions in below the main function
 
 
+
 void main() {
     //user inputs will also occur here
         //ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
+    printf("Enter number of elements: ");
+    int n;
+    scanf(" %d", &n);
+    int *arr = malloc(sizeof(int) * n);
+    rng(arr, n, 100);
+    printArr(arr, n);
+
+
     //add the calls here
     //use swtich case
 
 
 
+    free(arr);
 
 
 
@@ -211,6 +221,15 @@ void startHeap(int arr[], int n){
     printf("Total: %f\n", elapsed);
 }
 
+void startMerge(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    mergesort(arr, 0, n-1);
+    end = clock();
+    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Total: %f\n", elapsed);
+}
+
 
 void rng(int arr[], int length, int min){
     int newRand;
@@ -229,3 +248,11 @@ void rng(int arr[], int length, int min){
 
         arr[i] = newRand;
     }
+}
+
+void printArr(int arr[], int n){
+    printf("Array: ");
+    for(int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
