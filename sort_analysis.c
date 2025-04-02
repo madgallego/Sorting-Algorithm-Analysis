@@ -210,3 +210,22 @@ void startMerge(int arr[], int n){
     double elapsed = ((double) start - end) / CLOCKS_PER_SEC;
     printf("Total: %f", elapsed);
 }
+
+void rng(int arr[], int length, int min){
+    int newRand;
+    int unique = 0;
+
+    for (int i = 0; i < length; i++){
+        
+        do{
+            newRand = (rand() % (length - min + 1)) + min;
+            unique = 1;
+            for(int j = 0; j < i; j++){
+                if(arr[j] == newRand)
+                    unique = 0;
+            }
+        }while(unique != 1);
+
+        arr[i] = newRand;
+    }
+}
