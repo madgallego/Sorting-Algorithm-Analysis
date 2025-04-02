@@ -9,11 +9,19 @@
 void main() {
     //user inputs will also occur here
         //ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
+    printf("Enter number of elements: ");
+    int n;
+    scanf(" %d", &n);
+    int *arr = malloc(sizeof(int) * n);
+    rng(arr, n, 100);
+    
+
     //add the calls here
     //use swtich case
 
 
 
+    free(arr);
 
 
 
@@ -229,3 +237,4 @@ void rng(int arr[], int length, int min){
 
         arr[i] = newRand;
     }
+}
