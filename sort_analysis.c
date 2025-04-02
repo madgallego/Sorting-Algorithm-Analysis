@@ -23,7 +23,6 @@ void printArr(int arr[], int n); //function to print the array
 
 void main(){
     int i, N, X, choice, random_choice;
-
     
     printf("Enter num of values to be sorted: ");
     scanf("%d", &N);
