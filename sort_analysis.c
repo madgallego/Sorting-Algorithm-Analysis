@@ -32,9 +32,15 @@ void main(){
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
     switch(choice) {
-    case 1: printf("Randomly Generated"); rng(arr, N, 100);
-    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X);
+
+
+
+    case 1: printf("Randomly Generated"); rng(arr, N, 100); break;
+    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); break;
     }
+    
+    printArr(arr, N);
+
 
     free(arr);
 }
@@ -58,8 +64,10 @@ void selection(int arr[], int n){
         }
     }
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
 }
 //insertion
 void insertion(int arr[], int n){
@@ -76,8 +84,10 @@ void insertion(int arr[], int n){
         }
     }
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
 }
 //bubble
 void bubble(int arr[], int n){
@@ -94,8 +104,10 @@ void bubble(int arr[], int n){
         }
     }
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
 }
 
 //merge
@@ -217,8 +229,10 @@ void startQuick(int arr[], int n){
     clock_t end;
     quickHoare(arr, 0, n-1);
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
     
 }
 
@@ -227,8 +241,10 @@ void startHeap(int arr[], int n){
     clock_t end;
     heapSort(arr, n);
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
 }
 
 void startMerge(int arr[], int n){
@@ -236,8 +252,10 @@ void startMerge(int arr[], int n){
     clock_t end;
     mergesort(arr, 0, n-1);
     end = clock();
+    printf("Starting Tick: %d\n", (int) start);
+    printf("Ending Tick: %d\n", (int) end);
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Total: %f\n", elapsed);
+    printf("Total: %.15f\n", elapsed);
 }
 
 
