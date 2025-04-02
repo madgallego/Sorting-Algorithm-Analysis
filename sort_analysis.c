@@ -250,6 +250,16 @@ void rng(int arr[], int length, int min){
     }
 }
 
+void increasingSequence(int array[], int N, int *X) {
+    int i;
+
+    for(i=0; i<N; i++){
+        array[i] = *X;
+        (*X)++;
+    }
+    return;
+}
+
 void printArr(int arr[], int n){
     printf("Array: ");
     for(int i = 0; i < n; i++)
