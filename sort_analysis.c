@@ -15,6 +15,7 @@ void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
 void startQuick(int arr[], int n);
 void startHeap(int arr[], int n);
+void startMerge(int arr[], int n);
 void rng(int arr[], int length, int min);
 
 
@@ -226,6 +227,15 @@ void startHeap(int arr[], int n){
     clock_t start = clock();
     clock_t end;
     heapSort(arr, n);
+    end = clock();
+    double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Total: %f\n", elapsed);
+}
+
+void startMerge(int arr[], int n){
+    clock_t start = clock();
+    clock_t end;
+    mergesort(arr, 0, n-1);
     end = clock();
     double elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Total: %f\n", elapsed);
