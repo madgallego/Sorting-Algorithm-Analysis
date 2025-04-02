@@ -30,18 +30,66 @@ void main(){
 
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
+    printf("Choose input type: \n");
+    printf("1. Randomly Generated\n");
+    printf("2. Increasing Sequence\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
     switch(choice) {
+    case 1: printf("Randomly Generated"); 
+    rng(arr, N, 100); 
+    break;
 
+    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); 
+    scanf("%d", &X); increasingSequence(arr, N, &X);
+    break;
 
-
-    case 1: printf("Randomly Generated"); rng(arr, N, 100); break;
-    case 2: printf("Increasing Sequence\nEnter a positive starting value: "); scanf("%d", &X); increasingSequence(arr, N, &X); break;
+    default: printf("Invalid choice! Exiting program.\n");
+    return;
     }
     
-    printArr(arr, N);
+    while(1){
+        printf("Choose one of the Options below:\n\n");
+        printf(" 1 => Selection\n");
+        printf(" 2 => Insertion\n");
+        printf(" 3 => Bubble\n");
+        printf(" 4 => Merge\n");
+        printf(" 5 => Quicksort\n");
+        printf(" 6 => Heap sort\n");
+        printf("Enter your choice: ");
+        scanf("%d", &random_choice);
 
+    switch(random_choice){
+            case 1:
+            selection(arr,N);
+            break;
 
-    free(arr);
+            case 2:
+            insertion(arr,N);
+            break;
+
+            case 3:
+            bubble(arr,N);
+            break;
+
+            case 4:
+            startMerge(arr,N);
+            break;
+            
+            case 5:
+            startQuick(arr,N); 
+            break;
+
+            case 6:
+            startHeap(arr,N);
+            break;
+
+            default: printf("Invalid choice! Exiting program.\n");
+            return;
+        }
+    }
+ free(arr);
 }
 
 
