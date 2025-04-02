@@ -16,7 +16,7 @@ void heapSort(int arr[], int n); //algorithm for sorting using heap properties
 void startQuick(int arr[], int n); //function to measure the run time of quick sort algorithm
 void startHeap(int arr[], int n); //function to measure the run time of heap sort algorithm
 void startMerge(int arr[], int n); //function to measure the run time of merge sort algorithm
-void rng(int arr[], int length, int min); //function that generates random numbers as elements in the array
+void rng(int arr[], int n); //function that generates random numbers as elements in the array
 void increasingSequence(int arr[], int N, int *X); //function to input elements in the array from x, x+1,..., x+n 
 void printArr(int arr[], int n); //function to print the array
 
@@ -36,8 +36,8 @@ void main(){
     scanf("%d", &choice);
 
     switch(choice) {
-    case 1: printf("Randomly Generated"); 
-    rng(arr, N, 0); 
+    case 1: printf("Randomly Generated\n"); 
+    rng(arr, N); 
     break;
 
     case 2: printf("Increasing Sequence\nEnter a positive starting value: "); 
@@ -92,7 +92,7 @@ void main(){
             printf("\n");
             //regenarate our array based on settings
             if(choice == 1)
-                rng(arr, N, 0);
+                rng(arr, N);
             else
                 increasingSequence(arr, N, &X);
             i++;
@@ -316,23 +316,9 @@ void startMerge(int arr[], int n){
 }
 
 
-void rng(int arr[], int length, int min){
-    int newRand;
-    int unique = 0;
-
-    for (int i = 0; i < length; i++){
-        
-        do{
-            newRand = (rand() % (length - min + 1)) + min;
-            unique = 1;
-            for(int j = 0; j < i; j++){
-                if(arr[j] == newRand)
-                    unique = 0;
-            }
-        }while(unique != 1);
-
-        arr[i] = newRand;
-    }
+void rng(int arr[], int n){
+    for(int i = 0; i<n; i++)
+        arr[i] = rand();
 }
 
 void increasingSequence(int arr[], int N, int *X) {
