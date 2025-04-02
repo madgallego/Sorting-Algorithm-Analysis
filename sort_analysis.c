@@ -17,6 +17,7 @@ void startQuick(int arr[], int n);
 void startHeap(int arr[], int n);
 void startMerge(int arr[], int n);
 void rng(int arr[], int length, int min);
+void printArr(int arr[], int n);
 
 
 void main() {
@@ -259,4 +260,11 @@ void rng(int arr[], int length, int min){
 
         arr[i] = newRand;
     }
+}
+
+void printArr(int arr[], int n){
+    printf("Array: ");
+    for(int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
 }
