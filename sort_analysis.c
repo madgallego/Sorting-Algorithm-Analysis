@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define _POSIX_C_SOURCE 199309L
+
 
 //make use of fucntion decalrations here, and function definitions in below the main function
 void selection(int arr[], int n); //algorithm for sorting that finds the smallest element and swaps the position of the elements from the left
@@ -210,8 +212,35 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
 
 //PARTIONING ALGO
 int hoare(int arr[], int l, int h){
-    int p = arr[l];
+    int p;
     int i = l -1, j = h + 1, t;
+
+    //finding median
+    int max, min, med;
+    int q = 0;
+    max = arr[l];
+    min = arr[l];
+    med = arr[l];
+    while(q <= h){  //find min and max
+        if(arr[q] > max)
+            max = arr[q];
+        if(arr[q] < min)
+            min = arr[q];
+        q++;
+    }
+    med = (int) (max+min)/2;
+    //finding number closest to med
+    q = 0;
+    p = arr[l];
+    int diff = abs(med - p);
+    while(q <= h){
+        if(abs(med - arr[q]) < diff){
+            p = arr[q];
+            diff = abs(med - arr[q]);
+        }
+        q++;
+    }
+    
 
     while(1){
         do{
