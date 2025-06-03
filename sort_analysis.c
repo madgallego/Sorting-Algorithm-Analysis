@@ -10,8 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../../../../msys64/mingw64/include/pthread_time.h"
 
-#define _POSIX_C_SOURCE 199309L
 
 
 //make use of fucntion decalrations here, and function definitions in below the main function
@@ -36,7 +36,15 @@ void main(){
     int i, N, X, choice, random_choice;
     
     printf("Enter num of values to be sorted: ");
-    scanf("%d", &N);
+    if(scanf(" %d", &N) == 0){  //possible input string is a char
+        printf("Error: Please input a positive integer\n");
+        return;
+    }
+
+    if(N < 1){  //input is not viable
+        printf("Error: Please input a positive integer\n");
+        return;
+    }
 
     int *arr = malloc(sizeof(int) *N);//ensure that array is instantiated as a pointer(ex: int *arr = malloc(sizeof(int) * n))
     
@@ -44,7 +52,7 @@ void main(){
     printf("1. Randomly Generated\n");
     printf("2. Increasing Sequence\n");
     printf("Enter your choice: ");
-    scanf("%d", &choice);
+    scanf(" %d", &choice);
 
     switch(choice) {
     case 1: printf("Randomly Generated\n"); 
@@ -52,7 +60,7 @@ void main(){
     break;
 
     case 2: printf("Increasing Sequence\nEnter a positive starting value: "); 
-    scanf("%d", &X); increasingSequence(arr, N, &X);
+    scanf(" %d", &X); increasingSequence(arr, N, &X);
     break;
 
     default: printf("Invalid choice! Exiting program.\n");
@@ -67,8 +75,9 @@ void main(){
         printf(" 4 => Merge\n");
         printf(" 5 => Quicksort\n");
         printf(" 6 => Heap sort\n");
+        printf(" 7 => Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &random_choice);
+        scanf(" %d", &random_choice);
 
         int i = 0;
         while(i < 5){
@@ -96,6 +105,9 @@ void main(){
                     case 6:
                     startHeap(arr,N);
                     break;
+                    case 7:
+                    printf("Exiting program.\n");
+                    return;
 
                     default: printf("Invalid choice! Exiting program.\n");
                     return;
@@ -113,7 +125,7 @@ void main(){
  free(arr);
 }
 
-//add the different sorting algorithms beyond this point
+
 //selection
 void selection(int arr[], int n){
     struct timespec start, end; //timespec struc used to store the time elapsed from start to end when the program runs
@@ -210,37 +222,9 @@ void merge(int arr[], int i1, int j1, int i2, int j2){
     free(temp);
 }
 
-//PARTIONING ALGO
 int hoare(int arr[], int l, int h){
-    int p;
+    int p = arr[l];
     int i = l -1, j = h + 1, t;
-
-    //finding median
-    int max, min, med;
-    int q = 0;
-    max = arr[l];
-    min = arr[l];
-    med = arr[l];
-    while(q <= h){  //find min and max
-        if(arr[q] > max)
-            max = arr[q];
-        if(arr[q] < min)
-            min = arr[q];
-        q++;
-    }
-    med = (int) (max+min)/2;
-    //finding number closest to med
-    q = 0;
-    p = arr[l];
-    int diff = abs(med - p);
-    while(q <= h){
-        if(abs(med - arr[q]) < diff){
-            p = arr[q];
-            diff = abs(med - arr[q]);
-        }
-        q++;
-    }
-    
 
     while(1){
         do{
@@ -273,6 +257,7 @@ void quickHoare(int arr[], int l, int h){
         quickHoare(arr, p + 1, h);
     }
 }
+
 
 void heapify(int arr[], int n, int i){
     int m = i;
